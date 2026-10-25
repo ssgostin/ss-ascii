@@ -4,6 +4,8 @@ import re
 import io
 import sys
 import subprocess
+from pathlib import Path
+from typing import Iterable
 import pyfiglet
 from PIL import Image, ImageOps
 from textual.app import App, ComposeResult
@@ -38,6 +40,20 @@ IMAGE_STYLES = [
     ("Bloques Solidos", "blocks"),
     ("Alfanumerico Standard", "standard"),
 ]
+
+class ImageDirectoryTree(DirectoryTree):
+    IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"}
+
+    def filter_paths(self, paths: Iterable[Path]) -> Iterable[Path]:
+        filtered = []
+        for path in paths:
+            if path.name.startswith("."):
+                continue
+            if path.is_dir():
+                filtered.append(path)
+            elif path.suffix.lower() in self.IMAGE_EXTENSIONS:
+                filtered.append(path)
+        return filtered
 
 class SSAsciiApp(App):
     CSS = """
@@ -121,7 +137,8 @@ class SSAsciiApp(App):
                         yield Input(value="50", id="banner-width")
                     with TabPane("Imagen"):
                         yield Label("Seleccionar Imagen:")
-                        yield DirectoryTree(os.path.expanduser("~"), id="file-tree")
+                        yield ImageDirectoryTree(os.path.expanduser("~"), id="file-tree")
+                        yield Label("Imagen seleccionada: Ninguna", id="selected-image-label")
                         yield Label("Estilo de Resultado:")
                         yield Select(IMAGE_STYLES, value="rakko", id="img-style")
                         yield Label("Ancho (columnas):")
@@ -144,7 +161,34 @@ class SSAsciiApp(App):
         yield Footer()
 
     def on_directory_tree_file_selected(self, event: DirectoryTree.FileSelected) -> None:
-        self.selected_image = event.path
+        self.set_selected_image(event.path)
+
+    def set_selected_image(self, path: Path | str):
+        p = Path(path).expanduser().resolve()
+        if p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"}:
+            self.selected_image = p
+            label = self.query_one("#selected-image-label", Label)
+            label.update(f"Imagen seleccionada: {p.name}")
+        else:
+            label = self.query_one("#selected-image-label", Label)
+            label.update("Imagen seleccionada: Archivo no válido")
+
+    def on_paste(self, event) -> None:
+        text = event.text.strip()
+        if text.startswith("file://"):
+            text = text[7:]
+        text = text.strip("'\"")
+        text = text.replace("%20", " ")
+        
+        p = Path(text).expanduser()
+        if p.exists() and p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"}:
+            self.set_selected_image(p)
+            try:
+                tree = self.query_one("#file-tree", DirectoryTree)
+                tree.path = p.parent
+            except Exception:
+                pass
+            event.stop()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         btn_id = event.button.id
