@@ -1,4 +1,12 @@
-# SS-ASCII
+╔═════════════════════════════════════════╗
+║   _____                            _ _  ║
+║  / ____|            /\            (_|_) ║
+║ | (___  ___ ______ /  \   ___  ___ _ _  ║
+║  \___ \/ __|______/ /\ \ / __|/ __| | | ║
+║  ____) \__ \     / ____ \__ \ (__| | | ║
+║ |_____/|___/    /_/    \_\___/\___|_|_| ║
+║ by: https://github.com/ssgostin         ║
+╚═════════════════════════════════════════╝
 
 Una aplicación moderna de interfaz de usuario para terminal (TUI) construida con Python y Textual para generar impresionante arte ASCII y carteles de texto estilizados a partir de texto o imágenes.
 
