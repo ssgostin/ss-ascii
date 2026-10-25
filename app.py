@@ -323,6 +323,9 @@ class SSAsciiApp(App):
         else:
             status.update("Error al acceder al portapapeles.")
 
-if __name__ == "__main__":
+def main():
     app = SSAsciiApp()
     app.run()
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ss-ascii"
+version = "1.0.0"
+description = "A modern terminal UI application to generate ASCII art."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "textual>=0.40.0",
+    "pyfiglet>=0.8.0",
+    "Pillow>=9.0.0",
+]
+
+[project.scripts]
+ss-ascii = "app:main"

@@ -15,15 +15,22 @@ A modern terminal user interface (TUI) application built with Python and Textual
 
 ## Installation
 
-1. Clone or download this repository.
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+You can install `ss-ascii` directly from GitHub so that it registers as a global command in your terminal:
+
+```bash
+pip install git+https://github.com/santiagobustos-rgb/ss-ascii.git
+```
+
+Or if you have cloned the repository locally:
+
+```bash
+pip install .
+```
 
 ## Usage
 
-Run the application from your terminal:
+Once installed, simply run the application from any terminal or command prompt by typing:
+
 ```bash
-python app.py
+ss-ascii
 ```
