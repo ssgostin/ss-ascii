@@ -18,7 +18,7 @@ A modern terminal user interface (TUI) application built with Python and Textual
 You can install `ss-ascii` directly from GitHub so that it registers as a global command in your terminal:
 
 ```bash
-pip install git+https://github.com/santiagobustos-rgb/ss-ascii.git
+pip install git+https://github.com/ssgostin/ss-ascii.git
 ```
 
 Or if you have cloned the repository locally:
