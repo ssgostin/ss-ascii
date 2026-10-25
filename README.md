@@ -1,35 +1,35 @@
 # SS-ASCII
 
-A modern terminal user interface (TUI) application built with Python and Textual to generate stunning ASCII art and stylized text banners from text or images.
+Una aplicación moderna de interfaz de usuario para terminal (TUI) construida con Python y Textual para generar impresionante arte ASCII y carteles de texto estilizados a partir de texto o imágenes.
 
-## Features
+## Características
 
-- **Text Banners**: Convert text into large ASCII art banners using popular fonts (Slant, Standard, Block, Doom, etc.) with customizable borders (Heavy, Rounded, Double, ASCII, Simple).
-- **Image to ASCII**: Convert any image file into ASCII art with multiple rendering styles (Classic, Solid Blocks, Standard Alphanumeric) and color inversion support.
-- **Interactive Preview & Stats**: Selectable and copyable output view with live statistics (width, lines, total characters).
-- **Export & Clipboard**: Save results directly to files or copy them to your system clipboard instantly.
+- **Banners de Texto**: Convierte texto en grandes carteles de arte ASCII utilizando fuentes populares (Slant, Standard, Block, Doom, etc.) con bordes personalizables (Heavy, Rounded, Double, ASCII, Simple).
+- **Imagen a ASCII**: Convierte cualquier archivo de imagen en arte ASCII con múltiples estilos de renderizado (Clásico, Bloques Sólidos, Alfanumérico Estándar) y soporte para inversión de colores.
+- **Vista Previa Interactiva y Estadísticas**: Área de salida seleccionable y copiable con estadísticas en tiempo real (ancho, líneas, total de caracteres).
+- **Exportación y Portapapeles**: Guarda los resultados directamente en archivos o cópialos al portapapeles del sistema al instante.
 
-## Requirements
+## Requisitos
 
 - Python 3.8+
 
-## Installation
+## Instalación
 
-You can install `ss-ascii` directly from GitHub so that it registers as a global command in your terminal:
+Puedes instalar `ss-ascii` directamente desde GitHub para que se registre como un comando global en tu terminal:
 
 ```bash
 pip install git+https://github.com/ssgostin/ss-ascii.git
 ```
 
-Or if you have cloned the repository locally:
+O si has clonado el repositorio localmente:
 
 ```bash
 pip install .
 ```
 
-## Usage
+## Uso
 
-Once installed, simply run the application from any terminal or command prompt by typing:
+Una vez instalado, simplemente ejecuta la aplicación desde cualquier terminal o línea de comandos escribiendo:
 
 ```bash
 ss-ascii
